@@ -15,7 +15,7 @@ class _SignedScreenState extends State<SignedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Página Logada'),
+        title: Text('Clube do Livro'),
         actions: [
           GestureDetector(onTap: deslogarFirebase, child: Icon(Icons.logout)),
         ],

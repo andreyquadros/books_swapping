@@ -27,13 +27,17 @@ class CustomDrawer extends StatelessWidget {
                 )),
           ),
           ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Página Inicial'),
+            onTap: () {
+              Get.toNamed('/signed');
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.update),
             title: Text('Atualizar Perfil do Usuário'),
             onTap: () {
-              // Atualize o estado do aplicativo
-              // ...
-              // Em seguida, feche o drawer
-              Navigator.pop(context);
+              Get.toNamed('/userUpdate');
             },
           ),
           ListTile(

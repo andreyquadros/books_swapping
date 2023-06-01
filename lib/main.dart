@@ -1,5 +1,6 @@
 import 'package:book_swapping/view/recoveryPasswordScreen.dart';
 import 'package:book_swapping/view/registerScreen.dart';
+import 'package:book_swapping/view/userUpdateProfile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ Future<void> main() async {
         GetPage(name: '/register', page: () => RegisterScreen()),
         GetPage(name: '/recoveryPass', page: () => RecoveryPassScreen()),
         GetPage(name: '/signed', page: () => SignedScreen()),
+        GetPage(name: '/userUpdate', page: () => UserUpdateScreen()),
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
