@@ -1,6 +1,6 @@
 # donations_items
 
-Donation Itens App
+Books Swapping App
 
 ## Getting Started
 
