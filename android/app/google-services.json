@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "491848201322",
+    "project_id": "bookswapping-firebase",
+    "storage_bucket": "bookswapping-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491848201322:android:4f0c6e128517a732fb4613",
+        "android_client_info": {
+          "package_name": "com.example.donations_items"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArNSHHWHR8-ZTj9vdm3UDkfrdcFH3q6h8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
