@@ -38,7 +38,7 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> {
               padding: const EdgeInsets.all(32.0),
               child: TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Nome'),
+                decoration: InputDecoration(labelText: 'Nome', border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira seu nome';
@@ -51,7 +51,7 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> {
               padding: const EdgeInsets.all(32.0),
               child: TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(labelText: 'Email', border: OutlineInputBorder()),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira seu e-mail';

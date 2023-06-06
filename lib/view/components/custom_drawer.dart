@@ -22,7 +22,7 @@ class CustomDrawer extends StatelessWidget {
                 child: Text(
                   _userController.user?.email?.isNotEmpty == true
                       ? _userController.user!.email![0]
-                      : 'A',
+                      : 'C',
                   style: TextStyle(fontSize: 40.0),
                 )),
           ),
@@ -42,24 +42,12 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.book),
-            title: Text('Cadastrar Livro para Ler'),
-            onTap: () {
-              // Atualize o estado do aplicativo
-              // ...
-              // Em seguida, feche o drawer
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.done),
             title: Text('Cadastrar Livro Lido'),
             onTap: () {
-              // Atualize o estado do aplicativo
-              // ...
-              // Em seguida, feche o drawer
-              Navigator.pop(context);
+              Get.toNamed('/registerBook');
             },
           ),
+
           ListTile(
             leading: Icon(Icons.list),
             title: Text('Listar Livros Lidos'),
