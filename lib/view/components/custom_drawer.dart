@@ -34,6 +34,13 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            leading: Icon(Icons.bookmarks),
+            title: Text('Livros Disponíveis'),
+            onTap: () {
+              Get.toNamed('/listAllUsersBooks');
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.update),
             title: Text('Atualizar Perfil do Usuário'),
             onTap: () {
@@ -42,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.book),
-            title: Text('Cadastrar Livro Lido'),
+            title: Text('Cadastrar Meu Livro Lido'),
             onTap: () {
               Get.toNamed('/registerBook');
             },
@@ -50,12 +57,9 @@ class CustomDrawer extends StatelessWidget {
 
           ListTile(
             leading: Icon(Icons.list),
-            title: Text('Listar Livros Lidos'),
+            title: Text('Listar Meus Livros Lidos'),
             onTap: () {
-              // Atualize o estado do aplicativo
-              // ...
-              // Em seguida, feche o drawer
-              Navigator.pop(context);
+              Get.toNamed('/listBooks');
             },
           ),
         ],

@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:book_swapping/view/components/messages/customMaterialBanner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
@@ -9,12 +8,11 @@ import 'package:get/get.dart';
 
 import '../../../model/Book.dart';
 
+
 class BookController extends GetxController {
   File? file;
 
   Future<FilePickerResult?> pickFile() async {
-    // Verifica se a permissão foi concedida
-
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(type: FileType.image, allowMultiple: false);
 
@@ -62,13 +60,24 @@ class BookController extends GetxController {
     }
 
     CollectionReference livros =
-        FirebaseFirestore.instance.collection('livros');
+    FirebaseFirestore.instance.collection('livros');
 
     try {
       await livros.add(livro!.toMap());
-     customMaterialBanner(context, 'Livro Cadastrado com Sucesso', Colors.green);
+      customMaterialBanner(
+          context, 'Livro Cadastrado com Sucesso', Colors.green);
     } catch (e) {
       print('Erro ao adicionar livro: $e');
     }
+  }
+
+  Future<List<Book>> listarLivros() async {
+    CollectionReference livros = FirebaseFirestore.instance.collection(
+        'livros');
+
+    QuerySnapshot querySnapshot = await livros.get();
+    return querySnapshot.docs.map((doc) {
+      return Book.fromMap(doc.data() as Map<String, dynamic>);
+    }).toList();
   }
 }
