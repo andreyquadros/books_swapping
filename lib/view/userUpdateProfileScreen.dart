@@ -1,5 +1,6 @@
 import 'package:book_swapping/modelview/firebase/user/atualizarUsuarioAuthFirebase.dart';
 import 'package:book_swapping/view/components/custom_drawer.dart';
+import 'package:book_swapping/view/components/messages/customAnimatedText.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,8 +35,11 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> {
         key: _formKey,
         child: Column(
           children: <Widget>[
+            CustomAnimatedText(texto: 'Essa tela é destinada a alteração do nome e e-mail,'
+                ' os dois campos são obrigatórios, mesmo que não sofram alteração, para não infringir a '
+                'Lei Geral da Proteção de Dados'),
             Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.fromLTRB(32, 30, 32, 10),
               child: TextFormField(
                 controller: _nameController,
                 decoration: InputDecoration(labelText: 'Nome', border: OutlineInputBorder()),
@@ -48,7 +52,7 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding: const EdgeInsets.fromLTRB(32, 10, 32, 10),
               child: TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(labelText: 'Email', border: OutlineInputBorder()),
@@ -61,7 +65,7 @@ class _UserUpdateScreenState extends State<UserUpdateScreen> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             ElevatedButton(
               onPressed: () async {

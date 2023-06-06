@@ -74,7 +74,6 @@ flutter:
   # assets:
   assets:
     - assets/animations/book.riv
-    - assets/animations/books_dropping.riv
     - assets/animations/loader.riv
     - assets/images/book_template.png
   #   - images/a_dot_ham.jpeg

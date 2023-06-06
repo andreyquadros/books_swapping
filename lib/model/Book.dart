@@ -34,4 +34,14 @@ class Book {
       'capa': capa,
     };
   }
+  // Método para transformar um JSON em um objeto Livro
+  factory Book.fromJson(Map<String, dynamic> json, String id) {
+    return Book(
+      nome: json['nome'],
+      emailDono: json['emailDono'],
+      sinopse: json['sinopse'],
+      isbn: json['isbn'],
+      capa: json['capa'],
+    );
+  }
 }

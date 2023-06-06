@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../model/Book.dart';
 import '../modelview/firebase/user/bookController.dart';
+import '../modelview/firebase/user/userController.dart';
 
 class ListBooksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
     final BookController bookController = Get.find();
+    final UserController _userController = Get.put(UserController());
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Livros'),
       ),
       body: FutureBuilder<List<Book>>(
-        future: bookController.listarLivros(),
+        future: bookController.listarLivrosAuth(email:_userController.user?.email ?? 'contato@clubedoautor.com.br'),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

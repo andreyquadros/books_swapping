@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:book_swapping/modelview/firebase/user/userController.dart';
 import 'package:book_swapping/view/components/messages/customMaterialBanner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
@@ -71,13 +72,52 @@ class BookController extends GetxController {
     }
   }
 
-  Future<List<Book>> listarLivros() async {
-    CollectionReference livros = FirebaseFirestore.instance.collection(
-        'livros');
+  Future<List<Book>> listarLivros({required String email}) async {
+    final db = FirebaseFirestore.instance;
+    QuerySnapshot querySnapshot = await db
+        .collection('livros')
+        .where('emailDono', isNotEqualTo: email)
+        .get();
 
-    QuerySnapshot querySnapshot = await livros.get();
-    return querySnapshot.docs.map((doc) {
-      return Book.fromMap(doc.data() as Map<String, dynamic>);
-    }).toList();
+    if (querySnapshot.docs.isNotEmpty) {
+      return querySnapshot.docs
+          .map((doc) {
+        final data = doc.data();
+        if (data != null) {
+          return Book.fromJson(data as Map<String, dynamic>, doc.id);
+        } else {
+          throw Exception('Data is null');
+        }
+      })
+          .toList();
+    } else {
+      return [];
+    }
+  }
+
+
+
+  Future<List<Book>> listarLivrosAuth({required String email}) async {
+    final db = FirebaseFirestore.instance;
+    final QuerySnapshot querySnapshot = await db
+        .collection('livros')
+        .where('emailDono', isEqualTo: email)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      return querySnapshot.docs
+          .map((doc) {
+        final data = doc.data();
+        if (data != null) {
+          return Book.fromJson(data as Map<String, dynamic>, doc.id);
+        } else {
+          throw Exception('Data is null');
+        }
+      })
+          .toList();
+    }
+
+
+    return [];
   }
 }
