@@ -1,4 +1,5 @@
 import 'package:book_swapping/modelview/firebase/book/atualizarEmprestimoLIvroFirebase.dart';
+import 'package:book_swapping/view/bookLocalizationScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,7 +52,7 @@ class BookDetailsLoans extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(onPressed: () {
-                  
+                  Get.to(() => BookLocalizationScreen());
 
                 }, child: Text('Solicitar Empréstimo')),
                 
