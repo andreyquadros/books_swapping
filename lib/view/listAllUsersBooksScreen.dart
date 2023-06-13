@@ -2,7 +2,9 @@ import 'package:book_swapping/view/components/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../model/Book.dart';
-import '../modelview/firebase/user/bookController.dart';
+import '../modelview/firebase/book/bookController.dart';
+import '../modelview/firebase/book/booksDetailController.dart';
+import '../modelview/firebase/book/booksDetailLoans.dart';
 import '../modelview/firebase/user/userController.dart';
 
 class ListAllUsersBooksScreen extends StatelessWidget {
@@ -32,29 +34,41 @@ class ListAllUsersBooksScreen extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(32.0),
-                    child: Card(
-                      color: Colors.white70,
-                      child: Column(
-                        children: <Widget>[
-                          // Primeiro, a imagem de fundo
-                          Container(
-                            width: 200,
-                            height: 200,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/images/book_template.png'), // caminho para sua imagem
-                                fit: BoxFit.cover,  // isso faz com que a imagem cubra todo o espaço disponível
+                    child: GestureDetector(
+                    onTap: (){
+
+                  final BookDetailsController _bookDetailsController = Get.put(BookDetailsController(livro));
+
+                  Get.to(() => BookDetailsLoans())?.then((value) {
+
+                  _bookDetailsController.cleanController();
+                  });
+
+                  },
+                      child: Card(
+                        color: Colors.white70,
+                        child: Column(
+                          children: <Widget>[
+                            // Primeiro, a imagem de fundo
+                            Container(
+                              width: 200,
+                              height: 200,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/images/book_template.png'), // caminho para sua imagem
+                                  fit: BoxFit.cover,  // isso faz com que a imagem cubra todo o espaço disponível
+                                ),
                               ),
                             ),
-                          ),
-                          // Em seguida, o ListTile por cima da imagem
-                          ListTile(
-                            title: Text('${livro.nome}'),
-                            subtitle: Text('${livro.emailDono}'),
-                            trailing: Icon(Icons.add_box_sharp, color: Colors.deepOrangeAccent,),
+                            // Em seguida, o ListTile por cima da imagem
+                            ListTile(
+                              title: Text('${livro.nome}'),
+                              subtitle: Text('${livro.emailDono}'),
+                              trailing: Icon(Icons.add_box_sharp, color: Colors.deepOrangeAccent,),
 
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

@@ -4,7 +4,7 @@ import 'package:book_swapping/view/components/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../model/Book.dart';
-import '../modelview/firebase/user/bookController.dart';
+import '../modelview/firebase/book/bookController.dart';
 import '../modelview/firebase/user/userController.dart';
 import 'components/loadings/loadingAnimations.dart';
 

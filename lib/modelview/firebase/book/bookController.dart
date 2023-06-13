@@ -77,6 +77,7 @@ class BookController extends GetxController {
     QuerySnapshot querySnapshot = await db
         .collection('livros')
         .where('emailDono', isNotEqualTo: email)
+        .where('emprestimo', isEqualTo: 'sim')
         .get();
 
     if (querySnapshot.docs.isNotEmpty) {

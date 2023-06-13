@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rive/rive.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import '../modelview/firebase/user/bookController.dart';
+import '../modelview/firebase/book/bookController.dart';
 import '../modelview/firebase/user/deslogarFirebase.dart';
 
 class SignedScreen extends StatefulWidget {

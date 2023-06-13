@@ -1,3 +1,4 @@
+import 'package:book_swapping/view/bookDetailsScreen.dart';
 import 'package:book_swapping/view/listAllUsersBooksScreen.dart';
 import 'package:book_swapping/view/listBooksScreen.dart';
 import 'package:book_swapping/view/recoveryPasswordScreen.dart';
@@ -29,6 +30,7 @@ Future<void> main() async {
         GetPage(name: '/listBooks', page: () => ListBooksScreen()),
         GetPage(name: '/listAllUsersBooks', page: () => ListAllUsersBooksScreen()),
         GetPage(name: '/userUpdate', page: () => UserUpdateScreen()),
+
       ],
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
