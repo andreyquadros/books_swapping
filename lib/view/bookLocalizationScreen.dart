@@ -1,11 +1,7 @@
-import 'dart:ffi';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:image/image.dart' as img;
 
+import '../modelview/book/abrirWhatsApp.dart';
 
 class BookLocalizationScreen extends StatefulWidget {
   const BookLocalizationScreen({Key? key}) : super(key: key);
@@ -42,7 +38,7 @@ class _BookLocalizationScreenState extends State<BookLocalizationScreen> {
     //_loadCustomIcon();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Localização Aproximada do Livro'),
+        title: const Text('Localização Aproximada do Livro'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,24 +50,26 @@ class _BookLocalizationScreenState extends State<BookLocalizationScreen> {
                 onMapCreated: (controller) {
                   _mapController = controller;
                 },
-                initialCameraPosition: CameraPosition(
+                initialCameraPosition: const CameraPosition(
                   target: LatLng(-9.908715120057176,
                       -63.03458896814527), // Substitua latitude e longitude pelas coordenadas reais do livro
                   zoom: 20,
                 ),
-                markers: Set<Marker>.from([
+                markers: <Marker>{
                   Marker(
                     markerId: MarkerId('Livro'),
-                    position: LatLng(-9.908715120057176,
-                        -63.03458896814527),
-                   //icon: bookIcon!,
-                   // Substitua latitude e longitude pelas coordenadas reais do livro
+                    position: LatLng(-9.908715120057176, -63.03458896814527),
+                    //icon: bookIcon!,
+                    // Substitua latitude e longitude pelas coordenadas reais do livro
                     infoWindow: InfoWindow(
+                      onTap: () {
+                        launchWhatsAppUri('+5569993485858');
+                      },
                       title: 'Localização do Livro',
-                      snippet: 'Descrição Aproximada da localização do livro',
+                      snippet: 'Localização Aproximada do livro',
                     ),
                   ),
-                ]),
+                },
               ),
             )
           ],
